@@ -36,14 +36,21 @@ interface FormProps extends StandardProps {
    */
   subscribeId?: string
 
-  /** 是否开启免授权订阅。report-type 为 subscribe，template-id 与 subscribe-id 必填时设置该属性生效。
-   * 注意：只有白名单内小程序可使用此功能。
-   * @supported swan
+  /** 用于分发目的。取值：0 或 1，其中 0 表示默认，1 表示留资目标，需要和留资分发配置一起使用，详情见留资分发配置
+   * @supported tt
+   * @default 0
    */
-  skipSubscribeAuthorize?: boolean
+  conversionTarget?: number
+
+  /** 用于分发目的。开发者在【小程序开发者后台 -> 进入目标小程序 -> 运营 -> 流量配置 -> 抖音 -> 留资分发配置】复制创建的配置 ID，需要和留资分发配置一起使用，详情见留资分发配置
+   *
+   * @supported tt
+   * @default ""
+   */
+  clueComponentId?: string
 
   /** 携带 form 中的数据触发 submit 事件
-   * @supported weapp, alipay, swan, tt, qq, jd, rn
+   * @supported weapp, alipay, swan, tt, qq, jd, h5, rn
    */
   onSubmit?: CommonEventFunction<FormProps.onSubmitEventDetail>
 
@@ -72,7 +79,7 @@ declare namespace FormProps {
  *
  * 当点击 form 表单中 form-type 为 submit 的 button 组件时，会将表单组件中的 value 值进行提交，需要在表单组件中加上 name 来作为 key。
  * @classification forms
- * @supported weapp, alipay, swan, tt, qq, jd, h5, rn, harmony
+ * @supported weapp, alipay, swan, tt, qq, jd, h5, rn, harmony, harmony_hybrid
  * @example_react
  * ```tsx
  * class App extends Component {

@@ -197,11 +197,47 @@ interface LivePusherProps extends StandardProps {
    */
   pictureInPictureMode?: string | any[]
 
-  /** 自定义渲染，允许开发者自行处理所采集的视频帧，详见LivePusherContext
+  /** 是否启动自定义特效，设定后不能更改
    * @supported weapp
    * @default false
    */
-  enableVideoCustomRender?: boolean
+  customEffect?: boolean
+
+  /** 自定义特效美白效果，取值 0~1。需要开启 custom-effect
+   * @supported weapp
+   * @default 0
+   */
+  skinWhiteness?: number
+
+  /** 自定义特效磨皮效果，取值 0~1。需要开启 custom-effect
+   * @supported weapp
+   * @default 0
+   */
+  skinSmoothness?: number
+
+  /** 自定义特效瘦脸效果，取值 0~1。需要开启 custom-effect
+   * @supported weapp
+   * @default 0
+   */
+  faceThinness?: number
+
+  /** 自定义特效大眼效果，取值 0~1。需要开启 custom-effect
+   * @supported weapp
+   * @default 0
+   */
+  eyeBigness?: number
+
+  /** 0：关闭变声；1：熊孩子；2：萝莉；3：大叔；4：重金属；6：外国人；7：困兽；8：死肥仔；9：强电流；10：重机械；11：空灵
+   * @supported weapp
+   * @default 0
+   */
+  voiceChangerType?: number
+
+  /** 帧率，有效值为 1~30
+   * @supported weapp
+   * @default 15
+   */
+  fps?: number
 
   /** 状态变化事件，detail = {code}
    * @supported weapp, qq
@@ -301,7 +337,7 @@ declare namespace LivePusherProps {
   interface AudioVolumeType {
     /** 自动 */
     auto
-    
+
     /** 媒体音量 */
     media
 
